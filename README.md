@@ -29,6 +29,8 @@ Nachdem der Switchless 8x ROM Multi Floppy Speeder installiert ist, sollte beim 
 
 Der Wechsel der Speeder kann am Computer durch einen LOAD-Befehl oder einem DOS-Befehl ausgelöst werden. Hier ein paar Beispiele:
 
+![Screenshot Bankswitching](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_1541_screenshot_bankswitching.jpg?raw=true)
+
 1.
 > LOAD"2@RNROM",8,1
 
@@ -40,9 +42,9 @@ Das Diskettenlauferk versucht die Datei mit dem Namen "2@RNROM" zu laden und ant
 Das Laufwerk für den Befehl "I" aus und inizialisiert sich neu. Der Microcontroller erkennt den Befehl "3@RNROM" und wechselt zur ROM-Bank 3. Die LED blinkt dreimal und das Disketten führt einen Reset aus. Danach ist der Speeder "SpeedDos+40T" aktiv.
 
 3.
-> @I:8@RNROM
+> @I:5@RNROM
 
-Einige Rechner Kernals ermöglichen das einfache senden von Diskettenkommandos via @-Befehl (DolphinDos, SpeedDos, Jiffy-DOS). Damit ist der Wechsel besonders komfortabel. Bei diesem Beispiel führt das Laufwerk eine den Befehl "I" aus und inizialisiert sich. Der Microcontroller erkennt den "8@RNROM" Befehl und wechselt zu ROM-Bank 8 "SpeedDos Expert". Die PCB LED blinkt 8 mal und das Laufwerk führt ein Reset aus um den Speeder korrekt zu aktivieren.
+Einige Rechner Kernals ermöglichen das einfache senden von Diskettenkommandos via @-Befehl (DolphinDos, SpeedDos, Jiffy-DOS). Damit ist der Wechsel besonders komfortabel. Bei diesem Beispiel führt das Laufwerk eine den Befehl "I" aus und inizialisiert sich. Der Microcontroller erkennt den "8@RNROM" Befehl und wechselt zu ROM-Bank 5 "S-Jiffydos 1". Die PCB LED blinkt 5 mal und das Laufwerk führt ein Reset aus um den Speeder korrekt zu aktivieren.
 
 ![PCB Connectors](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_1541_render_JP-SW.jpg?raw=true)
 # Anschlüsse

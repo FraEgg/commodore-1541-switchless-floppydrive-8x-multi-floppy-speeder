@@ -65,3 +65,16 @@ Mit dem Serial Peripheral Interface (SPI) kann über ein ASP Programmer die Firm
 
 ### LED (D1)
 Die LED blinkt wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 aktiviert ist, dann blinkt die LED einmal, ROM-Bank 2 blinkt zweimal usw. Danach führt das Diskettenlaufwerk einen Reset durch, damit das richtige ROM korrekt startet.
+
+## ROM-RAM Memorymap
+
+| ROM-Bank | ROM Area      | CPU RAM Area(s)  | Kernal     |Command|
+| -------- | --------------|------------------|------------|-------|
+| 0        | $00000-$0FFFF |$6000 - $9FFF 32KB|CBMDOS2.6  |1@RNROM|
+| 1        | $10000-$1FFFF |$6000 - $9FFF 32KB|DolphinDos 2.0|2@RNROM|
+| 2        | $20000-$2FFFF |$6000 - $9FFF 32KB|SpeedDos+40T|3@RNROM|
+| 3        | $30000-$3FFFF |$6000 - $9FFF 32KB|JiffyDos 5.0|4@RNROM|
+| 4        | $40000-$4FFFF |$6000 - $7FFF 08KB|S-JiffyDos 1|5@RNROM|
+| 5        | $50000-$5FFFF |$6000 - $7FFF 08KB|CBMDOS2.6  |6@RNROM|
+| 6        | $60000-$6FFFF |$A000 - $BFFF 08KB|CBMDOS2.6  |7@RNROM|
+| 7        | $70000-$7FFFF |$A000 - $BFFF 08KB|SpeedDos2.7Expert|8@RNROM|

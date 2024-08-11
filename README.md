@@ -24,8 +24,8 @@ Nachdem der Switchless 8x ROM Multi Floppy Speeder installiert ist, sollte beim 
 | 3| SpeedDos+40T|Parallel|
 | 4| JiffyDos5.0|IEC only|
 | 5| S-JiffyDos|IEC only|
-| 6| CBMDOS2.6|placeholder|
-| 7| CBMDOS2.6|placeholder|
+| 6| CBMDOS2.6|Placeholder|
+| 7| CBMDOS2.6|Placeholder|
 | 8| SpeedDos Expert|Parallel+Ram|
 
 ### Wechsel der ROM-Bank/ des Kernals / Speeder
@@ -75,6 +75,31 @@ Die LED blinkt wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 a
 | 2        | $20000-$2FFFF |$6000 - $9FFF 32KB|SpeedDos+40T|3@RNROM|
 | 3        | $30000-$3FFFF |$6000 - $9FFF 32KB|JiffyDos 5.0|4@RNROM|
 | 4        | $40000-$4FFFF |$6000 - $7FFF 08KB|S-JiffyDos 1|5@RNROM|
-| 5        | $50000-$5FFFF |$6000 - $7FFF 08KB|CBMDOS2.6  |6@RNROM|
-| 6        | $60000-$6FFFF |$A000 - $BFFF 08KB|CBMDOS2.6  |7@RNROM|
+| 5        | $50000-$5FFFF |$6000 - $7FFF 08KB|CBMDOS2.6(Placeholder)|6@RNROM|
+| 6        | $60000-$6FFFF |$A000 - $BFFF 08KB|CBMDOS2.6(Placeholder)|7@RNROM|
 | 7        | $70000-$7FFFF |$A000 - $BFFF 08KB|SpeedDos2.7Expert|8@RNROM|
+
+# Bauteile / BOM
+Die Elektronik besteht aus folgenden Bauteilen:
+
+ - 2x Pin Header 2.54 Straight 1 x 20 (BKL10120536) (Connector to 1541 Mainboard)
+ - 1x IC Socket DIP40 2.54mm Pin Connector Socket (U1) (CPU 6502 / UC5 / U3)
+ - 2x IC Socket DIP20 2.54mm Pin Connector Socket (U3/U5) (74HCT273N / Atmel F16V8 BQL-15PV)
+ - 1x IC Socket PLCC32 DIP PLCC IC socket adapter (EEPROM/EPROM)
+ - 1x IC Atmel F16V8 BQL-15SU (U5) (GAL/PAL) (U5)
+ - 1x IC 74HCT273D Octal D-type flip-flop with reset; positive-edge trigger (U3) 
+ - 1x IC SRAM ISSI 62C256AL-45ULI 28-PIN SOP (U6)
+ - 1x IC ATmega328PB 8-Bit-ATMega AVR Microcontroller, 32 KB, 20 MHz, TQFP-32 (U4)
+ - 1x DIP Crystal Oscillator 16MHZ HC-49 (Y1)
+ - 1x EPROM-OTP AT27C040-70JU PLCC32 / AM27C040-120JC PLCC32 oder EEPROM 29F040 (PLCC32) (U2)
+ - 4x Tantalum Capacitor 16V 100nF radial DIP (C1,C2,C5,C6)
+ - 2x Tantalum Capacitor 16V 22pF radial DIP (C3,C4)
+ - 1x Resistor 560R THT Axial L 3.6mm D 1.6mm P 5.08mm Horizontal (R3)
+ - 3x Resistor 10K THT Axial L 3.6mm D 1.6mm P 5.08mm Horizontal (R2,R4,R5) 
+ - 1x LED Diode THT 3.0mm
+ - 1x Tactile Tact Push Button Switch DIP 4Pin 6*6*4.3mm micro switch Self-reset DIP Key Switches (JTP-1130) (SW1)
+ 
+ Optional:
+- 1x Connector Pin Header 2x03 Pol P 2.00mm Vertical (BKL10120739) (SPI) (J4)
+- 1x Connector Pin Header 1x03 Pol P 2.00mm Vertical (BKL10120728) (RST-/SELROM) (J5)
+- 1x Resistor 3,3K THT Axial L 3.6mm D 1.6mm P 5.08mm Horizontal (only WDC65C02 CPU) (R1)

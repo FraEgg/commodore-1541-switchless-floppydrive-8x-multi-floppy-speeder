@@ -10,10 +10,12 @@ Der Switchless 8x ROM Multi Floppy Speeder wird in der 1541 in den CPU Sockel zw
 
 Die original Kernal ROMs müssen beim Betrieb des Switchless 8x ROM Multi Floppy Speeder entfernt werden (1541 I UB3 u. UB4 / 1541 II U4) Die 1541 II hat nur ein Kernal-ROM (U4). Die neue Platine kommt sonst beim Einblenden der neue ROMs in konflikt mit den originalen ROMs und das Diskettenlaufwerk würde beim einschalten nicht korrekt starten.
 
+# Bedienung
+Nachdem der Switchless 8x ROM Multi Floppy Speeder installiert ist
 
 ![PCB Connectors](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_1541_render_JP-SW.jpg?raw=true)
 # Anschlüsse
-Der Switchless 8x ROM Multi Floppy Speeder verfügt über mehrere Anschlüsse (J4/J5) einen Taster (SW1) und LED (D1).
+Der Switchless 8x ROM Multi Floppy Speeder verfügt über mehrere Anschlüsse (J4/J5) einen Taster (SW1) und LED (D1). Der SW1 ist immer mit auf der Platine verlötet. Der J5 RST-/SELROM und J4 SPI sind optional und nicht mit Bauteilen bestückt. Das hat den Vorteil, dass der Nutzer selbst entscheiden kann ob er diese mit Kabel oder PIN-Header versieht und nutzt. Zudem können zu hohe PIN-Header auch störend beim Einbau der PCB in eine 1541 II sein, da darüber die Mechanik des Laufwerks platziert ist und dieses dann die Mechanik stören kann.
 
 ## SW1 (Reset)
 Dieser Taster führt reinen Reset aus. Erst führt der Microcontroler des Switchless 8x ROM Multi Floppy Speeder einen Neustart durch uns dann bekommt das Diskettenlaufwerk einen Reset. Es ist mit einem Power ON des Laufwerks zu vergleichen. Die ausgewählte ROM BANK wird nicht zurück gesetzt. Der Microcontroller merkt sich das zuletzt verwendete ROM auch nach einem Reset oder Power OFF/ON.
@@ -23,3 +25,6 @@ Dieser Anschluss ist optional. Die Belegung ist 1=SELROM, 2=GND/MASSE, 3=RSROM. 
 
 ## J4 (SPI)
 Mit dem Serial Peripheral Interface (SPI) kann über ein ASP Programmer die Firmware des ATMEGA328 Microcontroller aktualisiert werden. Hierzu bitte vor dem Programmieren immer die Platine aus dem Sockel des Laufwerks nehmen und die CPU 6502 aus dem Sockel entfernen!
+
+## LED (D1)
+Die LED blinkt wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 aktiviert ist, dann blinkt die LED einmal, ROM-Bank 2 blinkt zweimal usw. Danach führt das Diskettenlaufwerk einen Reset durch, damit das richtige ROM korrekt startet.

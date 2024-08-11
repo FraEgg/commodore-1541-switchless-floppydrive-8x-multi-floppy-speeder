@@ -72,7 +72,7 @@ Mit dem Serial Peripheral Interface (SPI) kann über ein ASP Programmer die Firm
 ### LED (D1)
 Die LED blinkt wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 aktiviert ist, dann blinkt die LED einmal, ROM-Bank 2 blinkt zweimal usw. Danach führt das Diskettenlaufwerk einen Reset durch, damit das richtige ROM korrekt startet.
 
-## ROM-RAM Memorymap
+## ROM-RAM Memorymap V2.2
 
 | ROM-Bank | ROM Area      | CPU RAM Area(s)  | Kernal     |Command|
 | -------- | --------------|------------------|------------|-------|
@@ -82,8 +82,8 @@ Die LED blinkt wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 a
 | 3        | $30000-$3FFFF |$6000 - $9FFF 32KB|JiffyDos 5.0|4@RNROM|
 | 4        | $40000-$4FFFF |$6000 - $7FFF 08KB|S-JiffyDos 1|5@RNROM|
 | 5        | $50000-$5FFFF |$6000 - $7FFF 08KB|CBMDOS2.6(Placeholder)|6@RNROM|
-| 6        | $60000-$6FFFF |$A000 - $BFFF 08KB|CBMDOS2.6(Placeholder)|7@RNROM|
-| 7        | $70000-$7FFFF |$A000 - $BFFF 08KB|SpeedDos2.7Expert|8@RNROM|
+| 6        | $60000-$6FFFF |$4000 - $7FFF 16KB<br>$A000 - $BFFF 08KB|CBMDOS2.6(Placeholder)|7@RNROM|
+| 7        | $70000-$7FFFF |$4000 - $7FFF 16KB<br>$A000 - $BFFF 08KB|SpeedDos2.7Expert|8@RNROM|
 
 ## EPROM / Kernals
 Die DOS-KERNALs werden in einem EPROM abgelegt. Das EPROM z. B. 27C040/29F040 ist ein 512KB EPROM. Es wird in 8x 64KB Bänke (Bank 0-7) aufgeteilt. Jede Bank $x0000 - $xFFFF spiegelt den 64 KB Speicherbereich der Floppy 1:1 wieder. Das ROM wird grundsätzlich ab dem Speicherbereich $2000 - $FFFF in den CPU Adressenbereich eingefügt. Überlagert wird der ROM Bereich nur durch die RAM-Bereiche (siehe Tabelle RAM-ROM Memorymap).

@@ -4,7 +4,11 @@
 
 ## Allgemeines
 
-Dieses ist mein Switchless 8x ROM Multi Floppy Speeder Projekt. Es ist die Weiterentwicklung meiner Version 1.7. Diese Platine erweitert das Commodore 1541 Diskettenlaufwerk um 32KB SRAM und bietet mit seinem 512KB Eprom ausreichend Platz für bis zu 8x belibige Kernal-Betriebsysteme zur Verfügung. Es ist z.B. kompatibel für DolphinDos 2, SpeedDos Expert, SpeedDos+, Jiffy-DOS, S-Jiffy und dem original CBMDOS2.6. Durch die 32KB zusätzlichen SRAM kann es auch als RAMBoard für spezielle Nibble-Kopierprogramme verwendet werden. Für Speeder mit paralleler Übertragung ist ein zusätzlichen Parallel-Kabel z.B. zum Userport notwendig. Ich beitreibe meine Speeder mit einem SpeedDos kompatiblen Parallel-Kabel.
+Dieses ist mein Switchless 8x ROM Multi Floppy Speeder Projekt. Es ist die Weiterentwicklung meiner Version 1.7. Diese Platine erweitert das Commodore 1541 Diskettenlaufwerk um 32KB SRAM und bietet mit seinem 512KB Eprom ausreichend Platz für bis zu 8x belibige Kernals/Speeder zur Verfügung. Die Kernals lassen sich switchless (schalterlos) mit "DOS"-Befehlen vom Rechner umschalten. Das ist auch die wesentliche Weiterentwicklung. Für das Umschalten habe ich einen Microcontroller verbaut, der den Datenbus auf Kommandos zum Wechseln der Kernals überwacht. Dazu habe ich die Idee von RetroNynjah [1541-Switchless-Multi-ROM](https://github.com/RetroNynjah/1541-Switchless-Multi-ROM) übernommen und auf meine 8x ROM Multi Floppy Speeder integriert.
+
+Mein 8x ROM Multi Floppy Speeder ist kompatibel für DolphinDos 2, SpeedDos Expert, SpeedDos+, Jiffy-DOS, S-Jiffy und dem original CBMDOS2.6. Durch die 32KB zusätzlichen SRAM kann es auch als RAMBoard für spezielle Nibble-Kopierprogramme verwendet werden. Für Speeder mit paralleler Übertragung ist ein zusätzlichen Parallel-Kabel z.B. zum Userport notwendig. Ich beitreibe meine Speeder mit einem SpeedDos kompatiblen Parallel-Kabel.
+
+Einen Kernal-Umschalter für den Rechner ist nicht Bestandteil dieses Projektes. In diesem Fall kann jeder C64/C128 Kernal-Switcher verwendet werden. Empfehlen kann ich hierzu auch die passenden Projekte von RetroNynjah unter https://github.com/RetroNynjah.
 
 ## Installation
 ![1541 PCB Setup](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_1541_PCB_Setup_Proto.jpg?raw=true)
@@ -79,7 +83,31 @@ Die LED blinkt wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 a
 | 6        | $60000-$6FFFF |$A000 - $BFFF 08KB|CBMDOS2.6(Placeholder)|7@RNROM|
 | 7        | $70000-$7FFFF |$A000 - $BFFF 08KB|SpeedDos2.7Expert|8@RNROM|
 
-# Bauteile / BOM
+## EPROM / Kernals
+Die DOS-KERNALs werden in einem EPROM abgelegt. Das EPROM z. B. 27C040/29F040 ist ein 512KB EPROM. Es wird in 8x 64KB Bänke (Bank 0-7) aufgeteilt. Jede Bank $x0000 - $xFFFF spiegelt den 64 KB Speicherbereich der Floppy 1:1 wieder. Das ROM wird grundsätzlich ab dem Speicherbereich $2000 - $FFFF in den CPU Adressenbereich eingefügt. Überlagert wird der ROM Bereich nur durch die RAM-Bereiche (siehe Tabelle RAM-ROM Memorymap).
+
+Beim Betrieb der Multi-Speeder-Platine müssen alle original ROM-Bausteine ICs der 1541 entfernt bzw. deaktiviert werden (CS/CE/OE auf dauer High), da diese sich sonst mit dem ROM des Multi-Speeder im Adressenkonflikt befinden. Die Folge wäre ein Absturz der Floppy direkt beim einschalten.
+
+## RAM
+Ebenso wie das ROM wird das 32K RAM auch in verschiedenen Bereichen der 1541 eingeblendet. Wo das RAM eingeblendet wird, ist von der BANK abhängig, die gerade aktiv ist.
+
+### Welche RAM-Bereche werden wann eingeblendet?
+> BANK 0-3 $6000 - $9FFF (32KB)<br>
+> BANK 4-5 $6000 - $7FFF (08KB)<br>
+> BANK 6-7 $A000 - $BFFF (08KB)<br>
+> die RAM-Bereiche überlagern immer den ROM-Adressenraum.
+
+## EPROMS / EEPROMS
+Es gibt mehrere Varianten die verwendet werden können. Getestet habe ich diverse 27c040 Eproms oder ein Flash-EPROM 29F040. 
+Es muss darauf geachtet werden, dass der jeweilige Jumper JP2 oder JP3 gesetzt wird! Ansonsten funktioniert das Umschalten der Banks nicht korrekt, da sich das PIN-Layout dieser EPROM-Typen leicht unterscheiden (PIN 1/PIN 32).
+
+## 1541 Adressendecoder-Spiegel-Problematik
+Bei der 1541 hat Commodore am Adressdecoder gespart. Die VIAs 6522 belegen die Speicherbereige $1800-$18FF und $1C00-$1CFF und werden dann bis zur Adresse $8000 immer wieder gespiegelt. Das kollidiert mit der RAM Erweiterung. Das Problem habe ich behoben, in dem ich die Adressleitung A15 über die Platine entsprechend auf dem Motherboard anpasse. Das stoppt das Spiegel-Problem für das RAM. Somit kollidiert ab der Adresse $2000 in der 1541 nichts mehr. 
+
+## WDC 65C02 CPU und andere CPUs
+Es kann auch eine modernere WDC W65C02 CPU verwendet werden. Hierzu muss jedoch der optionale Widerstand R1 mit 3,3K und der JP1 geöffnet werden! Jedoch wird die 1541 dadurch nicht sehr kompatibel. Das original CBM-DOS läuft, die meisten Floppyspeeder nutzen jedoch auch illegale OP-Codes der originalen alten MOS 6502A CPU. Diese kennt die neure WDC W65C02 CPU nicht. Die Folge ist, dass viele Schnelllader die illegalen OP-Codes verwenden nicht funktionieren. Deshalb suche ich noch eine FPGA Emulation die man für meinen Multi-Speeder anstelle einer originalen der MOS 6502A CPU. Rockwell 6502 CPUs und die von UMC sowie SY6502A funktionieren problemlos. 
+
+## Bauteile / BOM
 Die Elektronik besteht aus folgenden Bauteilen:
 
  - 2x Pin Header 2.54 Straight 1 x 20 (BKL10120536) (Connector to 1541 Mainboard)
@@ -103,3 +131,21 @@ Die Elektronik besteht aus folgenden Bauteilen:
 - 1x Connector Pin Header 2x03 Pol P 2.00mm Vertical (BKL10120739) (SPI) (J4)
 - 1x Connector Pin Header 1x03 Pol P 2.00mm Vertical (BKL10120728) (RST-/SELROM) (J5)
 - 1x Resistor 3,3K THT Axial L 3.6mm D 1.6mm P 5.08mm Horizontal (only WDC65C02 CPU) (R1)
+
+## Spenden
+Wer meine Arbeit unterstützen möchte, der kann mir gerne eine Spende über Paypal senden.
+[> Spenden <](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=Q8HXKYARXKT4L&ssrt=1714757590172)
+
+## Haftungsausschluss
+Ich gebe mir sehr viel Mühe und lege Wert auf Sorgfalt. Aber ich kann natürlich keine Fehler ausschließen. Das ist ein Hobbyprojekt und ich übernehme deshalb auch keine Garantie für die Funktion oder Folgen, die ein Umbau/Einbau in deinen Geräte mit meinen Projekten haben kann. Auch für mögliche Folgeschäden bei beschriebener korrekter Nutzung meiner Platine übernehme ich keinerlei Garantie oder Haftung.
+
+## Danke
+Ich möchte mich bei allen bedanken, die mich bei diesen Projekten unterstützt haben. Nicht nur den Spendern sondern auch die Nutzer die mir hilfreiche Tipps oder Hinweise für verbesserungen gegeben haben.
+
+Speziell möchte ich mich bei RetroNynjah für seine Idee mit dem switchless ROM/Banking bedanken. Diese Funktion habe ich mit leichten Anpassungen übernommen. Seine tollen Projekte findest Du hier: [https://github.com/RetroNynjah/](https://github.com/RetroNynjah/)
+
+## Viel Spass
+Ich wünsche euch viel Spass mit diesem Projekt.
+
+Viele Grüße
+Frank Eggen

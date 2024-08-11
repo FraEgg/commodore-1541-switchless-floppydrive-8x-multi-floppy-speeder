@@ -11,7 +11,38 @@ Der Switchless 8x ROM Multi Floppy Speeder wird in der 1541 in den CPU Sockel zw
 Die original Kernal ROMs müssen beim Betrieb des Switchless 8x ROM Multi Floppy Speeder entfernt werden (1541 I UB3 u. UB4 / 1541 II U4) Die 1541 II hat nur ein Kernal-ROM (U4). Die neue Platine kommt sonst beim Einblenden der neue ROMs in konflikt mit den originalen ROMs und das Diskettenlaufwerk würde beim einschalten nicht korrekt starten.
 
 # Bedienung
-Nachdem der Switchless 8x ROM Multi Floppy Speeder installiert ist
+Nachdem der Switchless 8x ROM Multi Floppy Speeder installiert ist, sollte beim ersten Start das Diskettenlaufwerk im der ROM-Bank 1 starten. In meinem Fall ist das das original CBMDOS.
+
+## ROM-Bank Beispiel:
+| ROM Bank | Kernal| Notice|
+| -------- | -------- | -------- |
+| 1| CBMDOS2.6|IEC only|
+| 2| Dolphon Dos 2.0|Parallel+Ram|
+| 3| SpeedDos+40T|Parallel|
+| 4| JiffyDos5.0|IEC only|
+| 5| S-JiffyDos|IEC only|
+| 6| CBMDOS2.6|placeholder|
+| 7| CBMDOS2.6|placeholder|
+| 8| SpeedDos Expert|Parallel+Ram|
+
+## Wechsel der ROM-Bank/ des Kernals / Speeder
+
+Der Wechsel der Speeder kann am Computer durch einen LOAD-Befehl oder einem DOS-Befehl ausgelöst werden. Hier ein paar Beispiele:
+
+1.
+> LOAD"2@RNROM",8,1
+
+Das Diskettenlauferk versucht die Datei mit dem Namen "2@RNROM" zu laden und antwortet mit einem "FILE NOT FOUND" Fehlermeldung. Jedoch erkennt der Microkontroller die Anweisung "2@RNROM" uns wechselt auf die ROM-Bank 2. Die LED am PCB blinkt dann zweimal und das Diskettenlaufwerk führt einen Reset durch um das neue Kernel-ROM korrekt zu starten. Danach ist der entsprechende Speeder "Dolphin Dos 2.0" funktionsfähig. Achte darauf, dass Du auch auf deinem Rechner das entsprechende passende Kernal-ROM aktivierst.
+
+2.
+> OPEN 1,8,15,"I:3@RNROM":CLOSE 1
+
+Das Laufwerk für den Befehl "I" aus und inizialisiert sich neu. Der Microcontroller erkennt den Befehl "3@RNROM" und wechselt zur ROM-Bank 3. Die LED blinkt dreimal und das Disketten führt einen Reset aus. Danach ist der Speeder "SpeedDos+40T" aktiv.
+
+3.
+> @I:8@RNROM
+
+Einige Rechner Kernals ermöglichen das einfache senden von Diskettenkommandos via @-Befehl (DolphinDos, SpeedDos, Jiffy-DOS). Damit ist der Wechsel besonders komfortabel. Bei diesem Beispiel führt das Laufwerk eine den Befehl "I" aus und inizialisiert sich. Der Microcontroller erkennt den "8@RNROM" Befehl und wechselt zu ROM-Bank 8 "SpeedDos Expert". Die PCB LED blinkt 8 mal und das Laufwerk führt ein Reset aus um den Speeder korrekt zu aktivieren.
 
 ![PCB Connectors](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_1541_render_JP-SW.jpg?raw=true)
 # Anschlüsse

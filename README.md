@@ -1,5 +1,7 @@
 # Switchless Floppydrive 8x Multi Floppy Speeder für das Commodore 1541 Diskettenlaufwerk
 
+Here is an English version [> translation <](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/README_EN.md)!
+
 ![1541 8x Multi-Floppy-Speeder PCB Prototype](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_proto.jpg?raw=true)
 
 ## Allgemeines

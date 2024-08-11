@@ -83,8 +83,6 @@ The LED blinks when switching to a different ROM Bank. When ROM Bank 1 is activa
 | 4        | $40000-$4FFFF |$6000 - $7FFF 08KB|S-JiffyDos 1|5@RNROM|
 | 5        | $50000-$5FFFF |$6000 - $7FFF 08KB|CBMDOS2.6(Placeholder)|6@RNROM|
 | 6        | $60000-$6FFFF |$A000 - $BFFF 08KB|CBMDOS2.6(Placeholder)|7@RNROM|
-
-
 | 7        | $70000-$7FFFF |$A000 - $BFFF 08KB|SpeedDos2.7Expert|8@RNROM|
 
 ## EPROM / Kernals

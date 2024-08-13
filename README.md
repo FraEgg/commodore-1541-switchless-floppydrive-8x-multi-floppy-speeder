@@ -79,9 +79,7 @@ Die LED blinkt, wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 
 | 0        | $00000-$0FFFF | $6000 - $9FFF 32 KB | CBMDOS 2.6  | 1@RNROM |
 | 1        | $10000-$1FFFF | $6000 - $9FFF 32 KB | DolphinDos 2.0 | 2@RNROM |
 | 2        | $20000-$2FFFF | $6000 - $9FFF 32 KB | SpeedDos+40T | 3@RNROM |
-| 3        | $30000-$3FFFF | $6000 - $9FFF 32
-
- KB | JiffyDos 5.0 | 4@RNROM |
+| 3        | $30000-$3FFFF | $6000 - $9FFF 32 KB | JiffyDos 5.0 | 4@RNROM |
 | 4        | $40000-$4FFFF | $6000 - $7FFF 08 KB | S-JiffyDos 1 | 5@RNROM |
 | 5        | $50000-$5FFFF | $6000 - $7FFF 08 KB | CBMDOS 2.6 (Placeholder) | 6@RNROM |
 | 6        | $60000-$6FFFF | $4000 - $7FFF 16 KB<br>$A000 - $BFFF 08 KB | CBMDOS 2.6 (Placeholder) | 7@RNROM |

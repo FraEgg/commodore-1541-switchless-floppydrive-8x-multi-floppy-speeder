@@ -83,9 +83,7 @@ The LED blinks when switching to another ROM Bank. When ROM Bank 1 is activated,
 | 4        | $40000-$4FFFF | $6000 - $7FFF 08 KB | S-JiffyDos 1 | 5@RNROM |
 | 5        | $50000-$5FFFF | $6000 - $7FFF 08 KB | CBMDOS 2.6 (Placeholder) | 6@RNROM |
 | 6        | $60000-$6FFFF | $4000 - $7FFF 16 KB<br>$A000 - $BFFF 08 KB | CBMDOS 2.6 (Placeholder) | 7@RNROM |
-| 7        | $70000-$7FFFF | $4000 - $7FFF 16 KB<br>$A000 - $BFFF 08 KB | SpeedDos 2.7 Expert |
-
- 8@RNROM |
+| 7        | $70000-$7FFFF | $4000 - $7FFF 16 KB<br>$A000 - $BFFF 08 KB | SpeedDos 2.7 Expert | 8@RNROM |
 
 ## EPROM / Kernals
 The DOS KERNALs are stored in an EPROM. The EPROM, e.g., 27C040/29F040, is a 512 KB EPROM. It is divided into 8x 64 KB banks (Bank 0-7). Each bank $x0000 - $xFFFF mirrors the 64 KB memory area of the floppy 1:1. The ROM is generally inserted into the CPU address area from the memory area $2000 - $FFFF. The ROM area is only overlaid by the RAM areas (see table RAM-ROM Memory Map).

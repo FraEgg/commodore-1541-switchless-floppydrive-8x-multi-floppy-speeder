@@ -30,7 +30,7 @@ After the Switchless 8x ROM Multi Floppy Speeder is installed, the disk drive sh
 | 3 | SpeedDos+40T | Parallel |
 | 4 | JiffyDos 5.0 | IEC only |
 | 5 | S-JiffyDos | IEC only |
-| 6 | CBMDOS 2.6 | Placeholder |
+| 6 | RapiDOS Cl.| Parallel |
 | 7 | CBMDOS 2.6 | Placeholder |
 | 8 | SpeedDos Expert | Parallel + RAM |
 

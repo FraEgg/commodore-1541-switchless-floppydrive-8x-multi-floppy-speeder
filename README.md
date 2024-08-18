@@ -102,6 +102,9 @@ Ebenso wie das ROM wird das 32 KB RAM auch in verschiedenen Bereichen der 1541 e
 ## EPROMs / EEPROMs
 Es gibt mehrere Varianten, die verwendet werden können. Getestet habe ich diverse 27C040 Eproms oder ein Flash-EPROM 29F040. Es muss darauf geachtet werden, dass der jeweilige Jumper JP2 oder JP3 gesetzt wird! Ansonsten funktioniert das Umschalten der Bänke nicht korrekt, da sich das PIN-Layout dieser EPROM-Typen leicht unterscheidet (PIN 1/PIN 32).
 
+## 8x Multi-Speeder RAM Diagnose-Tool
+Im Verzeichnis /software/ befindet sich ein Diagnosetool für den C64, um das 32K RAM des Multi-Floppy-Speeders zu testen. Die Speicherstellen werden von $6000 bis $9FFF zunächst mit $00-Bytes und anschließend mit $FF-Bytes beschrieben. Sollten Fehler auftreten, werden diese angezeigt. Dieser Test sollte immer mit BANK0 und dem originalen CBMDOS durchgeführt werden. Das Tool gibt es hier zum ![Download](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/tree/master/software). Das Tool ist hilfreich, um zu testen, ob nach dem Verlöten des RAM-Bausteins dieser auch funktioniert. 
+
 ## 1541 Adressendecoder-Spiegel-Problematik
 Bei der 1541 hat Commodore am Adressdecoder gespart. Die VIAs 6522 belegen die Speicherbereiche $1800-$18FF und $1C00-$1CFF und werden dann bis zur Adresse $8000 immer wieder gespiegelt. Das kollidiert mit der RAM-Erweiterung. Das Problem habe ich behoben, indem ich die Adressleitung A15 über die Platine entsprechend auf dem Motherboard anpasse. Das stoppt das Spiegel-Problem für das RAM. Somit kollidiert ab der Adresse $2000 in der 1541 nichts mehr. 
 

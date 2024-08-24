@@ -88,16 +88,16 @@ Der Switchless 8x ROM Multi Floppy Speeder verfügt über mehrere Anschlüsse, e
 
 ## ROM-RAM Memorymap
 
-| ROM-Bank | ROM-Bereich | CPU-RAM-Bereich(e) | Kernal                | Command  |
-| -------- | ----------- | ------------------ | --------------------- | -------- |
-| 0        | $00000-$0FFFF | $2000 - $9FFF 32 KB | CBMDOS 2.6            | 1@RNROM  |
-| 1        | $10000-$1FFFF | $2000 - $9FFF 32 KB | DolphinDos 2.0        | 2@RNROM  |
-| 2        | $20000-$2FFFF | $2000 - $9FFF 32 KB | SpeedDos+40T          | 3@RNROM  |
-| 3        | $30000-$3FFFF | $2000 - $9FFF 32 KB | JiffyDos 5.0          | 4@RNROM  |
-| 4        | $40000-$4FFFF | $2000 - $7FFF 24 KB | S-JiffyDos 1          | 5@RNROM  |
-| 5        | $50000-$5FFFF | $2000 - $7FFF 24 KB | CBMDOS 2.6 (Placeholder) | 6@RNROM  |
-| 6        | $60000-$6FFFF | $A000 - $BFFF 08 KB | CBMDOS 2.6 (Placeholder) | 7@RNROM  |
-| 7        | $70000-$7FFFF | $A000 - $BFFF 08 KB | SpeedDos 2.7 Expert   | 8@RNROM  |
+| ROM Bank | ROM Area         | CPU RAM Area(s)       | Kernal                | Command  |
+| -------- | ---------------- | --------------------- | --------------------- | -------- |
+| 0        | $00000-$0FFFF    | $2000 - $9FFF 32 KB   | CBMDOS 2.6            | 1@RNROM  |
+| 1        | $10000-$1FFFF    | $2000 - $9FFF 32 KB   | DolphinDos 2.0        | 2@RNROM  |
+| 2        | $20000-$2FFFF    | $2000 - $9FFF 32 KB   | SpeedDos+40T          | 3@RNROM  |
+| 3        | $30000-$3FFFF    | $2000 - $9FFF 32 KB   | JiffyDos 5.0          | 4@RNROM  |
+| 4        | $40000-$4FFFF    | $2000 - $7FFF 24 KB   | S-JiffyDos 1          | 5@RNROM  |
+| 5        | $50000-$5FFFF    | $2000 - $7FFF 24 KB   | RapiDos Classic | 6@RNROM  |
+| 6        | $60000-$6FFFF    | $A000 - $BFFF 08 KB   | CBMDOS 2.6 (Placeholder) | 7@RNROM  |
+| 7        | $70000-$7FFFF    | $A000 - $BFFF 08 KB   | SpeedDos 2.7 Expert   | 8@RNROM  |
 
 ### Speicherüberlagerung
 

@@ -75,7 +75,7 @@ Dieser Anschluss ist optional. Die Belegung ist 1 = SELROM, 2 = GND/MASSE, 3 = R
 Mit dem Serial Peripheral Interface (SPI) kann über einen ASP-Programmer die Firmware des ATMEGA328 Mikrocontrollers aktualisiert werden. Hierzu bitte vor dem Programmieren immer die Platine aus dem Sockel des Laufwerks nehmen und die CPU 6502 aus dem Sockel entfernen!
 
 ### LED (D1)
-Die LED blinkt, wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 aktiviert ist, dann blinkt die LED einmal, ROM-Bank 2 blinkt zweimal usw. Danach führt das Diskettenlaufwerk einen Reset durch, damit das richtige ROM korrekt startet.
+Die LED blinkt, wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 aktiviert ist, dann blinkt die LED einmal, ROM-Bank 2 blinkt zweimal usw. Danach führt das Diskettenlaufwerk einen Reset durch, damit das richtige ROM korrekt startet. Anstelle einer LED kann man auch die Grüne-Power-LED der 1541 angeschlossen werden. Im normalbetrieb ist die LED immer an.
 
 ## ROM-RAM Memorymap V2.2b
 

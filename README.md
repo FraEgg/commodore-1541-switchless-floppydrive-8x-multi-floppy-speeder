@@ -1,126 +1,127 @@
-# Switchless Floppydrive 8x Multi Floppy Speeder für das Commodore 1541 Diskettenlaufwerk
+# Switchless Floppy Drive 8x Multi Floppy Speeder für das Commodore 1541 Diskettenlaufwerk
 
 Here is an English version [> translation <](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/README_EN.md)!
 
 ![1541 8x Multi-Floppy-Speeder PCB Prototype](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_proto.jpg?raw=true)
 
-## Allgemeines
+## Überblick
 
-Dies ist mein Switchless 8x ROM Multi Floppy Speeder Projekt. Es ist die Weiterentwicklung meiner Version 1.7. Diese Platine erweitert das Commodore 1541 Diskettenlaufwerk um 32 KB SRAM und bietet mit ihrem 512 KB EPROM ausreichend Platz für bis zu 8 beliebige Kernals/Speeder. Die Kernals lassen sich schalterlos (switchless) mit "DOS"-Befehlen vom Rechner umschalten. Das ist auch die wesentliche Weiterentwicklung. Für das Umschalten habe ich einen Mikrocontroller verbaut, der den Datenbus auf Kommandos zum Wechseln der Kernals überwacht. Dazu habe ich die Idee von RetroNynjah [1541-Switchless-Multi-ROM](https://github.com/RetroNynjah/1541-Switchless-Multi-ROM) übernommen und auf meinen 8x ROM Multi Floppy Speeder integriert.
+Dieses Projekt ist eine Weiterentwicklung meiner Version 1.7 des Switchless 8x ROM Multi Floppy Speeders. Die Platine erweitert das Commodore 1541 Diskettenlaufwerk um 32 KB SRAM und 512 KB EPROM, was Platz für bis zu 8 Kernals/Speeder bietet. Die Kernals lassen sich ohne Schalter (switchless) direkt über DOS-Befehle vom Rechner aus umschalten. 
 
-Mein 8x ROM Multi Floppy Speeder ist kompatibel mit DolphinDos 2, SpeedDos Expert, SpeedDos+, Jiffy-DOS, S-Jiffy und dem originalen CBMDOS 2.6. Durch die 32 KB zusätzlichen SRAM kann er auch als RAM-Board für spezielle Nibble-Kopierprogramme verwendet werden. Für Speeder mit paralleler Übertragung ist ein zusätzliches Parallelkabel, z.B. zum Userport, notwendig. Ich betreibe meine Speeder mit einem SpeedDos-kompatiblen Parallelkabel.
+### Hauptfunktionen:
 
-Ein Kernal-Umschalter für den Rechner ist nicht Bestandteil dieses Projekts. In diesem Fall kann jeder C64/C128 Kernal-Switcher verwendet werden. Empfehlen kann ich hierzu auch die passenden Projekte von RetroNynjah unter https://github.com/RetroNynjah.
+- **Schalterloses Umschalten**: Kernals können direkt über DOS-Befehle umgeschaltet werden.
+- **Kompatibilität**: Unterstützt DolphinDos 2, SpeedDos Expert, SpeedDos+, Jiffy-DOS, S-Jiffy und das originale CBMDOS 2.6.
+- **RAM-Erweiterung**: Durch das 32 KB zusätzliche SRAM kann die Platine auch als RAM-Board für spezielle Nibble-Kopierprogramme verwendet werden.
 
 ## Installation
-![1541 PCB Setup](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_1541_PCB_Setup_Proto.jpg?raw=true)
 
-Der Switchless 8x ROM Multi Floppy Speeder wird in der 1541 in den CPU-Sockel zwischen Platine und 6502 CPU platziert (1541 I Sockel UC5 und 1541 II Sockel U3).
-
-Die originalen Kernal-ROMs müssen beim Betrieb des Switchless 8x ROM Multi Floppy Speeders entfernt werden (1541 I UB3 und UB4 / 1541 II U4). Die 1541 II hat nur ein Kernal-ROM (U4). Die neue Platine kommt sonst beim Einblenden der neuen ROMs in Konflikt mit den originalen ROMs, und das Diskettenlaufwerk würde beim Einschalten nicht korrekt starten.
+Der Switchless 8x ROM Multi Floppy Speeder wird zwischen die Platine und die 6502 CPU im CPU-Sockel der 1541 eingesetzt (1541 I: Sockel UC5, 1541 II: Sockel U3). Vor der Installation müssen die originalen Kernal-ROMs entfernt werden, um Konflikte zu vermeiden.
 
 ## Bedienung
-Nachdem der Switchless 8x ROM Multi Floppy Speeder installiert ist, sollte beim ersten Start das Diskettenlaufwerk in der ROM-Bank 1 starten. In meinem Fall ist das das originale CBMDOS.
 
-### ROM-Bank Beispiel:
-| ROM-Bank | Kernal | Hinweis |
-| -------- | -------- | -------- |
-| 1 | CBMDOS 2.6 | IEC only |
-| 2 | DolphinDos 2.0 | Parallel + RAM |
-| 3 | SpeedDos+40T | Parallel |
-| 4 | JiffyDos 5.0 | IEC only |
-| 5 | S-JiffyDos | IEC only |
-| 6 | RapiDOS Cl. | Parallel |
-| 7 | CBMDOS 2.6 | Placeholder |
-| 8 | SpeedDos Expert | Parallel + RAM |
+### Erste Schritte
 
-### Wechsel der ROM-Bank / des Kernals / Speeder
+Nach der Installation sollte das Diskettenlaufwerk beim ersten Start automatisch in der ROM-Bank 1 starten, in der sich das originale CBMDOS befindet.
 
-Der Wechsel der Speeder kann am Computer durch einen LOAD-Befehl oder einen DOS-Befehl ausgelöst werden. Hier ein paar Beispiele:
+### ROM-Banken Übersicht
 
-1.
-> LOAD"2@RNROM",8,1
+| ROM-Bank | Kernal            | Hinweis                |
+| -------- | ----------------- | ---------------------- |
+| 1        | CBMDOS 2.6        | IEC only               |
+| 2        | DolphinDos 2.0    | Parallel + RAM         |
+| 3        | SpeedDos+40T      | Parallel               |
+| 4        | JiffyDos 5.0      | IEC only               |
+| 5        | S-JiffyDos        | IEC only               |
+| 6        | RapiDOS Cl.       | Parallel               |
+| 7        | CBMDOS 2.6        | Placeholder            |
+| 8        | SpeedDos Expert   | Parallel + RAM         |
 
-Das Diskettenlaufwerk versucht, die Datei mit dem Namen "2@RNROM" zu laden, und antwortet mit einer "FILE NOT FOUND"-Fehlermeldung. Jedoch erkennt der Mikrocontroller die Anweisung "2@RNROM" und wechselt auf die ROM-Bank 2. Die LED am PCB blinkt dann zweimal, und das Diskettenlaufwerk führt einen Reset durch, um das neue Kernal-ROM korrekt zu starten. Danach ist der entsprechende Speeder "DolphinDos 2.0" funktionsfähig. Achte darauf, dass du auch auf deinem Rechner das entsprechende passende Kernal-ROM aktivierst.
+### Wechseln der ROM-Bank
 
-2.
-> OPEN 1,8,15,"I:3@RNROM":CLOSE 1
+Der Wechsel der Speeder kann am Computer durch einfache Befehle ausgelöst werden:
 
-Das Laufwerk führt den Befehl "I" aus und initialisiert sich neu. Der Mikrocontroller erkennt den Befehl "3@RNROM" und wechselt zur ROM-Bank 3. Die LED blinkt dreimal, und das Diskettenlaufwerk führt einen Reset aus. Danach ist der Speeder "SpeedDos+40T" aktiv.
+1. **Wechsel zu Bank 2 (DolphinDos 2.0):**
 
-3.
-> @I:5@RNROM
+   ```plaintext
+   LOAD"2@RNROM",8,1
+   ```
 
-Einige Rechner-Kernals ermöglichen das einfache Senden von Diskettenkommandos via @-Befehl (DolphinDos, SpeedDos, Jiffy-DOS). Damit ist der Wechsel besonders komfortabel. Bei diesem Beispiel führt das Laufwerk den Befehl "I" aus und initialisiert sich. Der Mikrocontroller erkennt den "5@RNROM"-Befehl und wechselt zu ROM-Bank 5 "S-JiffyDos". Die PCB-LED blinkt fünfmal, und das Laufwerk führt einen Reset aus, um den Speeder korrekt zu aktivieren.
+   Das Laufwerk wechselt zu Bank 2 und startet automatisch neu.
 
-![Screenshot Bankswitching](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_1541_screenshot_bankswitching.jpg?raw=true)
+2. **Wechsel zu Bank 3 (SpeedDos+40T):**
 
-4.
-> @I:0@RNROM 
+   ```plaintext
+   OPEN 1,8,15,"I:3@RNROM":CLOSE 1
+   ```
 
-Mit dem Kommando 0@RNROM bzw. LOAD"0@RNROM",8,1 wird der Switchless-Modus temporär deaktiviert. Anschließend führt das Diskettenlaufwerk mit dem bisher aktivierten ROM einen Reset durch. Der 8x Multi-Speeder kann jetzt nicht mehr mit Kommandos einen ROM- bzw. Bank-Wechsel durchführen. Wenn der 8x Multi-Speeder einen Reset (Reset-Taster) erhält oder das Diskettenlaufwerk aus- und eingeschaltet wird, läuft der 8x Multi-Speeder wieder im Switchless-Modus und nimmt wieder Kommandos zum Wechsel des ROMs bzw. der Bank an.
+   Der Mikrocontroller wechselt zu Bank 3, die LED blinkt dreimal, und das Laufwerk startet neu.
 
-## Anschlüsse
+3. **Wechsel zu Bank 5 (S-JiffyDos):**
+
+   ```plaintext
+   @I:5@RNROM
+   ```
+
+   Der Mikrocontroller erkennt den Befehl und wechselt zu Bank 5. Die LED blinkt fünfmal, und das Laufwerk startet neu.
+
+4. **Temporäre Deaktivierung des Switchless-Modus:**
+
+   ```plaintext
+   @I:0@RNROM
+   ```
+
+   Der Switchless-Modus wird vorübergehend deaktiviert, bis das Laufwerk neu gestartet wird.
+
+## Anschlüsse und Komponenten
+
 ![PCB Connectors](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_1541_render_JP-SW.jpg?raw=true)
 
-Der Switchless 8x ROM Multi Floppy Speeder verfügt über mehrere Anschlüsse (J4/J5), einen Taster (SW1) und eine LED (D1). Der SW1 ist immer auf der Platine verlötet. Der J5 RST-/SELROM und J4 SPI sind optional und nicht mit Bauteilen bestückt. Das hat den Vorteil, dass der Nutzer selbst entscheiden kann, ob er diese mit Kabeln oder PIN-Headern versieht und nutzt. Zudem können zu hohe PIN-Header beim Einbau der PCB in eine 1541 II störend sein, da darüber die Mechanik des Laufwerks platziert ist, welche dann gestört werden kann.
+Der Switchless 8x ROM Multi Floppy Speeder verfügt über mehrere Anschlüsse, einen Taster (SW1) und eine LED (D1).
 
-### SW1 (Reset)
-Dieser Taster führt einen reinen Reset aus. Zuerst führt der Mikrocontroller des Switchless 8x ROM Multi Floppy Speeders einen Neustart durch, und dann bekommt das Diskettenlaufwerk einen Reset. Es ist mit einem Power-ON des Laufwerks zu vergleichen. Die ausgewählte ROM-Bank wird nicht zurückgesetzt. Der Mikrocontroller merkt sich das zuletzt verwendete ROM auch nach einem Reset oder Power OFF/ON.
+### Wichtige Anschlüsse:
 
-### J5 (RST-/SELROM)
-Dieser Anschluss ist optional. Die Belegung ist 1 = SELROM, 2 = GND/Masse, 3 = RSTROM. Wird SELROM z.B. mit einem Taster kurz auf GND/Masse gelegt, dann wird auf die nächste ROM-Bank (+1) umgeschaltet. Wird RSTROM kurz auf GND/Masse gelegt, dann wird der ROM-Zähler auf 1 gesetzt. Das ermöglicht, die ROM-Bank zurückzusetzen, wenn mal eine ROM-Bank nicht belegt ist. Sollte das der Fall sein, stürzt die CPU des Diskettenlaufwerks ab, und der ROM-Wechsel über den Rechner ist nicht mehr möglich. Mit RSTROM wird immer die ROM-Bank 1 aktiviert und ein Laufwerks-Reset durchgeführt. Deshalb sollte die ROM-Bank 1 immer mit einem funktionierenden Kernal-System versehen sein. Ich platziere dort immer das originale CBMDOS.
+- **SW1 (Reset)**: Führt einen Reset des Diskettenlaufwerks durch, ohne die aktuell ausgewählte ROM-Bank zurückzusetzen.
+- **J5 (RST-/SELROM)**: Optionaler Anschluss zum Umschalten der ROM-Banken mit einem externen Taster.
+- **J4 (SPI)**: Zum Aktualisieren der Firmware des Mikrocontrollers über einen ISP-Programmer.
+- **LED (D1)**: Zeigt die aktive ROM-Bank durch Blinken an (1x für Bank 1, 2x für Bank 2 usw.).
 
-### J4 (SPI)
-Mit dem Serial Peripheral Interface (SPI) kann über einen ISP-Programmer die Firmware des ATMEGA328 Mikrocontrollers aktualisiert werden
+## ROM-RAM Memorymap
 
-. Hierzu bitte vor dem Programmieren immer die Platine aus dem Sockel des Laufwerks nehmen und die CPU 6502 aus dem Sockel entfernen!
+| ROM-Bank | ROM-Bereich | CPU-RAM-Bereich(e) | Kernal                | Command  |
+| -------- | ----------- | ------------------ | --------------------- | -------- |
+| 0        | $00000-$0FFFF | $2000 - $9FFF 32 KB | CBMDOS 2.6            | 1@RNROM  |
+| 1        | $10000-$1FFFF | $2000 - $9FFF 32 KB | DolphinDos 2.0        | 2@RNROM  |
+| 2        | $20000-$2FFFF | $2000 - $9FFF 32 KB | SpeedDos+40T          | 3@RNROM  |
+| 3        | $30000-$3FFFF | $2000 - $9FFF 32 KB | JiffyDos 5.0          | 4@RNROM  |
+| 4        | $40000-$4FFFF | $2000 - $7FFF 24 KB | S-JiffyDos 1          | 5@RNROM  |
+| 5        | $50000-$5FFFF | $2000 - $7FFF 24 KB | CBMDOS 2.6 (Placeholder) | 6@RNROM  |
+| 6        | $60000-$6FFFF | $A000 - $BFFF 08 KB | CBMDOS 2.6 (Placeholder) | 7@RNROM  |
+| 7        | $70000-$7FFFF | $A000 - $BFFF 08 KB | SpeedDos 2.7 Expert   | 8@RNROM  |
 
-### LED (D1)
-Die LED blinkt, wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 aktiviert ist, blinkt die LED einmal, ROM-Bank 2 blinkt zweimal usw. Danach führt das Diskettenlaufwerk einen Reset durch, damit das richtige ROM korrekt startet. Anstelle einer LED kann man auch die grüne Power-LED der 1541 anschließen. Im Normalbetrieb ist die LED immer an.
+### Speicherüberlagerung
 
-## ROM-RAM Memorymap V2.2b
-
-| ROM-Bank | ROM-Bereich | CPU-RAM-Bereich(e) | Kernal | Command |
-| -------- | -------------- | ------------------ | ----------- | ------- |
-| 0        | $00000-$0FFFF | $2000 - $9FFF 32 KB | CBMDOS 2.6  | 1@RNROM |
-| 1        | $10000-$1FFFF | $2000 - $9FFF 32 KB | DolphinDos 2.0 | 2@RNROM |
-| 2        | $20000-$2FFFF | $2000 - $9FFF 32 KB | SpeedDos+40T | 3@RNROM |
-| 3        | $30000-$3FFFF | $2000 - $9FFF 32 KB | JiffyDos 5.0 | 4@RNROM |
-| 4        | $40000-$4FFFF | $2000 - $7FFF 24 KB | S-JiffyDos 1 | 5@RNROM |
-| 5        | $50000-$5FFFF | $2000 - $7FFF 24 KB | CBMDOS 2.6 (Placeholder) | 6@RNROM |
-| 6        | $60000-$6FFFF | $A000 - $BFFF 08 KB | CBMDOS 2.6 (Placeholder) | 7@RNROM |
-| 7        | $70000-$7FFFF | $A000 - $BFFF 08 KB | SpeedDos 2.7 Expert | 8@RNROM |
-
-Ab $2000 wird das ROM in den Arbeitsspeicher eingeblendet und wird nur vom RAM gemäß der Tabelle überlagert. 
-
-## EPROM / Kernals
-Die DOS-KERNALs werden in einem EPROM abgelegt. Das EPROM, z.B. 27C040/29F040, ist ein 512 KB EPROM. Es wird in 8x 64 KB Bänke (Bank 0-7) aufgeteilt. Jede Bank $x0000 - $xFFFF spiegelt den 64 KB Speicherbereich der Floppy 1:1 wider. Das ROM wird grundsätzlich ab dem Speicherbereich $2000 - $FFFF in den CPU-Adressenbereich eingefügt. Der ROM-Bereich wird nur durch die RAM-Bereiche überlagert (siehe Tabelle RAM-ROM Memorymap).
-
-Beim Betrieb der Multi-Speeder-Platine müssen alle originalen ROM-Bausteine (ICs) der 1541 entfernt bzw. deaktiviert werden (CS/CE/OE auf Dauer-High), da diese sich sonst mit dem ROM des Multi-Speeders im Adressenkonflikt befinden. Die Folge wäre ein Absturz der Floppy direkt beim Einschalten.
-
-## RAM
-Ebenso wie das ROM wird das 32 KB RAM auch in verschiedenen Bereichen der 1541 eingeblendet. Wo das RAM eingeblendet wird, ist von der Bank abhängig, die gerade aktiv ist.
-
-### Welche RAM-Bereiche werden wann eingeblendet?
-> BANK 0-3 $2000 - $9FFF (32 KB)<br>
-> BANK 4-5 $2000 - $9FFF (24 KB)<br>
-> BANK 6-7 $A000 - $BFFF (08 KB)<br>
-> Die RAM-Bereiche überlagern immer den ROM-Adressenraum.
+Ab $2000 wird das ROM in den Arbeitsspeicher eingeblendet und nur vom RAM gemäß der Tabelle überlagert.
 
 ## EPROMs / EEPROMs
-Es gibt mehrere Varianten, die verwendet werden können. Getestet habe ich diverse 27C040 EPROMs oder ein Flash-EPROM 29F040. Es muss darauf geachtet werden, dass der jeweilige Jumper JP2 oder JP3 gesetzt wird! Ansonsten funktioniert das Umschalten der Bänke nicht korrekt, da sich das PIN-Layout dieser EPROM-Typen leicht unterscheidet (PIN 1/PIN 32).
+
+Die DOS-KERNALs werden in einem EPROM gespeichert (z.B. 27C040/29F040 mit 512 KB). Diese Speicher werden in 8x 64 KB Bänke unterteilt. Beim Betrieb müssen alle originalen ROMs der 1541 entfernt oder deaktiviert werden, um Adresskonflikte zu vermeiden.
 
 ## 8x Multi-Speeder RAM Diagnose-Tool
-Im Verzeichnis /software/ befindet sich ein Diagnosetool für den C64, um das RAM des Multi-Floppy-Speeders zu testen. Die Speicherstellen werden von $6000 bis $9FFF zunächst mit $00-Bytes und anschließend mit $FF-Bytes beschrieben. Sollten Fehler auftreten, werden diese angezeigt. Dieser Test sollte immer mit BANK 0 und dem originalen CBMDOS durchgeführt werden. Das Tool gibt es hier zum ![Download](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/tree/master/software). Das Tool ist hilfreich, um zu testen, ob nach dem Verlöten des RAM-Bausteins dieser auch funktioniert. 
 
-## 1541 Adressendecoder-Spiegel-Problematik
-Bei der 1541 hat Commodore am Adressdecoder gespart. Die VIAs 6522 belegen die Speicherbereiche $1800-$18FF und $1C00-$1CFF und werden dann bis zur Adresse $8000 immer wieder gespiegelt. Das kollidiert mit der RAM-Erweiterung. Das Problem habe ich behoben, indem ich die Adressleitung A15 über die Platine entsprechend auf dem Motherboard anpasse. Das stoppt das Spiegel-Problem für das RAM. Somit kollidiert ab der Adresse $2000 in der 1541 nichts mehr. 
+Das Diagnose-Tool im Verzeichnis `/software/` hilft dabei, das 32K RAM des Multi-Floppy-Speeders zu testen. Es schreibt und liest die Speicherstellen mit $00- und $FF-Bytes, um Fehler zu erkennen. Der Test sollte immer mit Bank 0 und dem originalen CBMDOS durchgeführt werden.
+
+[Hier geht's zum Download.](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/tree/master/software)
+
+## Adressendecoder-Spiegel-Problematik
+
+Die VIAs 6522 der 1541 belegen Speicherbereiche, die bis zur Adresse $8000 gespiegelt werden, was mit der RAM-Erweiterung kollidieren kann. Dieses Problem wird durch eine Anpassung der Adressleitung A15 auf dem Motherboard behoben.
 
 ## WDC 65C02 CPU und andere CPUs
-Es kann auch eine modernere WDC W65C02 CPU verwendet werden. Hierzu muss jedoch der optionale Widerstand R1 mit 3,3K und der JP1 geöffnet werden! Jedoch wird die 1541 dadurch nicht sehr kompatibel. Das originale CBM-DOS läuft, aber die meisten Floppy-Speeder nutzen auch illegale OP-Codes der originalen alten MOS 6502A CPU. Diese kennt die neuere WDC W65C02 CPU nicht. Die Folge ist, dass viele Schnelllader, die illegale OP-Codes verwenden, nicht funktionieren. Deshalb suche ich noch eine FPGA-Emulation, die man für meinen Multi-Speeder anstelle einer originalen MOS 6502A CPU verwenden kann. Rockwell 6502 CPUs und die von UMC sowie SY6502A funktionieren problemlos. 
 
-## Bauteile / BOM
+Eine modernere WDC W65C02 CPU kann verwendet werden, allerdings verringert sich dadurch die Kompatibilität der 1541, da viele Schnelllader illegale OP-Codes der originalen MOS 6502A CPU nutzen, die von der WDC W65C02 nicht unterstützt werden.
+
+## Bauteile (BOM)
 Die Elektronik besteht aus folgenden Bauteilen:
 
 - 2x Pin Header 2,54 Straight 1 x 20 (BKL10120536) (Connector to 1541 Mainboard)
@@ -149,19 +150,22 @@ Optional:
 *) Anstelle der LED-Diode kann auch ein PIN-Header verlötet werden. Dann kann die grüne LED des Diskettenlaufwerks als Indikator-LED genutzt werden. 
 
 ## Spenden
-Wer meine Arbeit unterstützen möchte, kann mir gerne eine Spende über Paypal senden.
-[> Spenden <](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=Q8HXKYARXKT4L&ssrt=1714757590172)
+
+Wenn Sie meine Arbeit unterstützen möchten, freue ich mich über eine Spende via Paypal. [Hier spenden.](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=Q8HXKYARXKT4L&ssrt=1714757590172)
 
 ## Haftungsausschluss
-Ich gebe mir sehr viel Mühe und lege Wert auf Sorgfalt. Aber ich kann natürlich keine Fehler ausschließen. Das ist ein Hobbyprojekt, und ich übernehme deshalb auch keine Garantie für die Funktion oder Folgen, die ein Umbau/Einbau in deine Geräte mit meinen Projekten haben kann. Auch für mögliche Folgeschäden bei beschriebener korrekter Nutzung meiner Platine übernehme ich keinerlei Garantie oder Haftung.
 
-## Danke
-Ich möchte mich bei allen bedanken, die mich bei diesem Projekt unterstützt haben. Nicht nur den Spendern, sondern auch den Nutzern, die mir hilfreiche Tipps oder Hinweise für Verbesserungen gegeben haben.
+Dieses Projekt ist ein Hobbyprojekt. Ich übernehme keine Garantie
 
-Speziell möchte ich mich bei RetroNynjah für seine Idee und aktive Hilfe mit dem switchless ROM/Banking bedanken. Seine tollen Projekte findest du hier: [https://github.com/RetroNynjah/](https://github.com/RetroNynjah/)
+ für die Funktion oder für etwaige Schäden, die durch den Einbau oder die Nutzung entstehen könnten.
+
+## Danksagung
+
+Ein besonderer Dank geht an RetroNynjah für seine Idee mit dem switchless ROM/Banking, die ich mit leichten Anpassungen übernommen habe. Seine Projekte finden Sie [hier](https://github.com/RetroNynjah).
 
 ## Viel Spaß
-Ich wünsche euch viel Spaß mit diesem Projekt.
 
-Viele Grüße  
+Ich wünsche Ihnen viel Spaß mit diesem Projekt.
+
+Mit freundlichen Grüßen  
 Frank Eggen

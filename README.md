@@ -55,6 +55,11 @@ Einige Rechner-Kernals ermöglichen das einfache Senden von Diskettenkommandos v
 
 ![Screenshot Bankswitching](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_1541_screenshot_bankswitching.jpg?raw=true)
 
+4.
+> @I:0@RNROM 
+
+Mit dem Kommando 0@RNROM bzw. LOAD"0@RNROM",8,1 wird der Switchless-Modus temporär deaktiviert. Anschließend führt das Diskettenlaufwerk mit dem bisher aktivierten ROM einen Reset durch. Der 8x Multi-Speeder kann jetzt nicht mehr mit Kommandos einen ROM bzw. BANK-Wechsel durchführen. Wenn der 8x Multi-Speeder einen Reset (Reset-Taster) erhält oder das Disketten Laufwerk Aus/Ein geschaltet wird, dann läuft der 8x Multi-Speeder wieder im Switchless-Modus und nimmt wieder Kommandos zum Wechsel des ROM bzw. Bank an.
+
 ## Anschlüsse
 ![PCB Connectors](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_1541_render_JP-SW.jpg?raw=true)
 
@@ -72,18 +77,20 @@ Mit dem Serial Peripheral Interface (SPI) kann über einen ASP-Programmer die Fi
 ### LED (D1)
 Die LED blinkt, wenn zu einer anderen ROM-Bank geschaltet wird. Wenn ROM-Bank 1 aktiviert ist, dann blinkt die LED einmal, ROM-Bank 2 blinkt zweimal usw. Danach führt das Diskettenlaufwerk einen Reset durch, damit das richtige ROM korrekt startet.
 
-## ROM-RAM Memorymap V2.2
+## ROM-RAM Memorymap V2.2b
 
 | ROM-Bank | ROM-Bereich | CPU-RAM-Bereich(e) | Kernal | Command |
 | -------- | -------------- | ------------------ | ----------- | ------- |
-| 0        | $00000-$0FFFF | $6000 - $9FFF 32 KB | CBMDOS 2.6  | 1@RNROM |
-| 1        | $10000-$1FFFF | $6000 - $9FFF 32 KB | DolphinDos 2.0 | 2@RNROM |
-| 2        | $20000-$2FFFF | $6000 - $9FFF 32 KB | SpeedDos+40T | 3@RNROM |
-| 3        | $30000-$3FFFF | $6000 - $9FFF 32 KB | JiffyDos 5.0 | 4@RNROM |
-| 4        | $40000-$4FFFF | $6000 - $7FFF 08 KB | S-JiffyDos 1 | 5@RNROM |
-| 5        | $50000-$5FFFF | $6000 - $7FFF 08 KB | CBMDOS 2.6 (Placeholder) | 6@RNROM |
-| 6        | $60000-$6FFFF | $4000 - $7FFF 16 KB<br>$A000 - $BFFF 08 KB | CBMDOS 2.6 (Placeholder) | 7@RNROM |
-| 7        | $70000-$7FFFF | $4000 - $7FFF 16 KB<br>$A000 - $BFFF 08 KB | SpeedDos 2.7 Expert | 8@RNROM |
+| 0        | $00000-$0FFFF | $2000 - $9FFF 32 KB | CBMDOS 2.6  | 1@RNROM |
+| 1        | $10000-$1FFFF | $2000 - $9FFF 32 KB | DolphinDos 2.0 | 2@RNROM |
+| 2        | $20000-$2FFFF | $2000 - $9FFF 32 KB | SpeedDos+40T | 3@RNROM |
+| 3        | $30000-$3FFFF | $2000 - $9FFF 32 KB | JiffyDos 5.0 | 4@RNROM |
+| 4        | $40000-$4FFFF | $2000 - $7FFF 24 KB | S-JiffyDos 1 | 5@RNROM |
+| 5        | $50000-$5FFFF | $2000 - $7FFF 24 KB | CBMDOS 2.6 (Placeholder) | 6@RNROM |
+| 6        | $60000-$6FFFF | $A000 - $BFFF 08 KB | CBMDOS 2.6 (Placeholder) | 7@RNROM |
+| 7        | $70000-$7FFFF | $A000 - $BFFF 08 KB | SpeedDos 2.7 Expert | 8@RNROM |
+
+Ab $2000 wird das ROM in den Arbeitsspeicher eingeblendet und wird nur vom RAM gemäß der Tabelle überlagert. 
 
 ## EPROM / Kernals
 Die DOS-KERNALs werden in einem EPROM abgelegt. Das EPROM, z.B. 27C040/29F040, ist ein 512 KB EPROM. Es wird in 8x 64 KB Bänke (Bank 0-7) aufgeteilt. Jede Bank $x0000 - $xFFFF spiegelt den 64 KB Speicherbereich der Floppy 1:1 wider. Das ROM wird grundsätzlich ab dem Speicherbereich $2000 - $FFFF in den CPU-Adressenbereich eingefügt. Überlagert wird der ROM-Bereich nur durch die RAM-Bereiche (siehe Tabelle RAM-ROM Memorymap).
@@ -94,8 +101,8 @@ Beim Betrieb der Multi-Speeder-Platine müssen alle originalen ROM-Bausteine (IC
 Ebenso wie das ROM wird das 32 KB RAM auch in verschiedenen Bereichen der 1541 eingeblendet. Wo das RAM eingeblendet wird, ist von der Bank abhängig, die gerade aktiv ist.
 
 ### Welche RAM-Bereiche werden wann eingeblendet?
-> BANK 0-3 $6000 - $9FFF (32 KB)<br>
-> BANK 4-5 $6000 - $7FFF (08 KB)<br>
+> BANK 0-3 $2000 - $9FFF (32 KB)<br>
+> BANK 4-5 $2000 - $9FFF (24 KB)<br>
 > BANK 6-7 $A000 - $BFFF (08 KB)<br>
 > Die RAM-Bereiche überlagern immer den ROM-Adressenraum.
 
@@ -127,14 +134,17 @@ Die Elektronik besteht aus folgenden Bauteilen:
 - 4x Tantalum Capacitor 16V 100nF radial DIP (C1, C2, C5, C6)
 - 2x Tantalum Capacitor 16V 22pF radial DIP (C3, C4)
 - 1x Resistor 560R THT Axial L 3,6 mm D 1,6 mm P 5,08 mm Horizontal (R3)
-- 3x Resistor 10K THT Axial L 3,6 mm D 1,6 mm P 5,08 mm Horizontal (R2, R4, R5) 
-- 1x LED Diode THT 3,0 mm
+- 1x Resistor 10K THT Axial L 3,6 mm D 1,6 mm P 5,08 mm Horizontal (R2) 
+- 1x LED Diode THT 3,0 mm *)
 - 1x Tactile Tact Push Button Switch DIP 4Pin 6*6*4,3 mm Micro Switch Self-reset DIP Key Switches (JTP-1130) (SW1)
  
 Optional:
 - 1x Connector Pin Header 2x03 Pol P 2,00 mm Vertical (BKL10120739) (SPI) (J4)
 - 1x Connector Pin Header 1x03 Pol P 2,00 mm Vertical (BKL10120728) (RST-/SELROM) (J5)
 - 1x Resistor 3,3K THT Axial L 3,6 mm D 1,6 mm P 5,08 mm Horizontal (only WDC65C02 CPU) (R1)
+- 2x Resistor 10K THT Axial L 3,6 mm D 1,6 mm P 5,08 mm Horizontal (R4, R5) (wird nicht benötigt und entfällt zukünftig ganz)
+
+*) Anstelle der LED Diode kann auch ein PIN-Header verlötet werden. Dann kann die Grüne-LED des Diskettenlazfwerks als Indikator LED genutzt werden. 
 
 ## Spenden
 Wer meine Arbeit unterstützen möchte, der kann mir gerne eine Spende über Paypal senden.

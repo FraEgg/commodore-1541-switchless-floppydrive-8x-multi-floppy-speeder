@@ -6,13 +6,13 @@ Here is an English version [> translation <](https://github.com/FraEgg/commodore
 
 ## Überblick
 
-Dieses Projekt ist eine Weiterentwicklung meiner Version 1.7 des Switchless 8x ROM Multi Floppy Speeders. Die Platine erweitert das Commodore 1541 Diskettenlaufwerk um 32 KB SRAM und 512 KB EPROM, was Platz für bis zu 8 Kernals/Speeder bietet. Die Kernals lassen sich ohne Schalter (switchless) direkt über DOS-Befehle vom Rechner aus umschalten. 
+Dieses Projekt ist eine Weiterentwicklung meiner Version 1.7 des 8x ROM Multi Floppy Speeders V1.7. Die Platine erweitert das Commodore 1541 Diskettenlaufwerk um 32 KB SRAM und 512 KB EPROM, was Platz für bis zu 8 Kernals/Speeder bietet. Die Kernals lassen sich ohne Schalter (switchless) direkt über DOS-Befehle vom Rechner aus umschalten. 
 
 ### Hauptfunktionen:
 
 - **Schalterloses Umschalten**: Kernals können direkt über DOS-Befehle umgeschaltet werden.
 - **Kompatibilität**: Unterstützt DolphinDos 2, SpeedDos Expert, SpeedDos+, Jiffy-DOS, S-Jiffy und das originale CBMDOS 2.6.
-- **RAM-Erweiterung**: Durch das 32 KB zusätzliche SRAM kann die Platine auch als RAM-Board für spezielle Nibble-Kopierprogramme verwendet werden.
+- **RAM-Erweiterung**: Durch das 32 KB zusätzliche SRAM kann die Platine auch als RAMBoard für spezielle Nibble-Kopierprogramme verwendet werden.
 
 ## Installation
 

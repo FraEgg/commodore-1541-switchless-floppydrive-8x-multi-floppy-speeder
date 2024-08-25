@@ -2,7 +2,7 @@
 
 Here is an German version [> German <](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/README.md)!
 
-![1541 8x Multi-Floppy-Speeder PCB Prototype](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1_pcb_proto.jpg?raw=true)
+![1541 8x Multi-Floppy-Speeder 32 KB RAM PCB](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1b_pcb_smd_dip.jpg?raw=true)
 
 ## Overview
 

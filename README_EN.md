@@ -101,6 +101,8 @@ The Switchless 8x ROM Multi Floppy Speeder features several connections, a butto
 
 ### Memory Overlay
 
+![MemoryMap / Logic / Overlay](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.2b_logic.png?raw=true)
+
 Starting at $2000, the ROM is mapped into the working memory and is only overlaid by RAM as specified in the table.
 
 ## EPROMs / EEPROMs

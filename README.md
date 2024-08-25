@@ -16,6 +16,8 @@ Dieses Projekt ist eine Weiterentwicklung meiner Version 1.7 des 8x ROM Multi Fl
 
 ## Installation
 
+![Installation 1541 II](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1b_pcb_1541II.jpg?raw=true)
+
 Der Switchless 8x ROM Multi Floppy Speeder wird zwischen die Platine und die 6502 CPU im CPU-Sockel der 1541 eingesetzt (1541 I: Sockel UC5, 1541 II: Sockel U3). Vor der Installation müssen die originalen Kernal-ROMs entfernt werden, um Konflikte zu vermeiden.
 
 ## Bedienung

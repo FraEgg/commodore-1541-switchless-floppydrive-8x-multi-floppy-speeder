@@ -109,6 +109,8 @@ The DOS Kernals are stored in an EPROM (e.g., 27C040/29F040 with 512 KB). These 
 
 ## 8x Multi-Speeder RAM Diagnostic Tool
 
+![1541 8x Multi-Floppy-Speeder 32 KB RAM Diagnostic-Tool](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.2b_pcb_diag_tool.jpg?raw=true)
+
 The diagnostic tool in the `/software/` directory helps test the 32K RAM of the Multi-Floppy Speeder. It writes and reads memory locations with $00 and $FF bytes to detect errors. The test should always be conducted with Bank 0 and the original CBMDOS.
 
 [Download here.](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/tree/master/software)

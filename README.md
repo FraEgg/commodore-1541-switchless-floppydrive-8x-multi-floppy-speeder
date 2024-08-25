@@ -101,6 +101,8 @@ Der Switchless 8x ROM Multi Floppy Speeder verfügt über mehrere Anschlüsse, e
 
 ### Speicherüberlagerung
 
+![MemoryMap / Logic / Overlay](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.2b_logic.png?raw=true)
+
 Ab $2000 wird das ROM in den Arbeitsspeicher eingeblendet und nur vom RAM gemäß der Tabelle überlagert.
 
 ## EPROMs / EEPROMs

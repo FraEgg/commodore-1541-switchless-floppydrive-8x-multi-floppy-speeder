@@ -16,6 +16,8 @@ Dieses Projekt ist eine Weiterentwicklung meiner Version 1.7 des 8x ROM Multi Fl
 
 ## Installation
 
+![Installation 1541 II](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.1b_pcb_1541II.jpg?raw=true)
+
 Der Switchless 8x ROM Multi Floppy Speeder wird zwischen die Platine und die 6502 CPU im CPU-Sockel der 1541 eingesetzt (1541 I: Sockel UC5, 1541 II: Sockel U3). Vor der Installation müssen die originalen Kernal-ROMs entfernt werden, um Konflikte zu vermeiden.
 
 ## Bedienung
@@ -101,6 +103,8 @@ Der Switchless 8x ROM Multi Floppy Speeder verfügt über mehrere Anschlüsse, e
 
 ### Speicherüberlagerung
 
+![MemoryMap / Logic / Overlay](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.2b_logic.png?raw=true)
+
 Ab $2000 wird das ROM in den Arbeitsspeicher eingeblendet und nur vom RAM gemäß der Tabelle überlagert.
 
 ## EPROMs / EEPROMs
@@ -108,6 +112,8 @@ Ab $2000 wird das ROM in den Arbeitsspeicher eingeblendet und nur vom RAM gemä�
 Die DOS-KERNALs werden in einem EPROM gespeichert (z.B. 27C040/29F040 mit 512 KB). Diese Speicher werden in 8x 64 KB Bänke unterteilt. Beim Betrieb müssen alle originalen ROMs der 1541 entfernt oder deaktiviert werden, um Adresskonflikte zu vermeiden.
 
 ## 8x Multi-Speeder RAM Diagnose-Tool
+
+![1541 8x Multi-Floppy-Speeder 32 KB RAM Diagnostic-Tool](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/v2.2b_pcb_diag_tool.jpg?raw=true)
 
 Das Diagnose-Tool im Verzeichnis `/software/` hilft dabei, das 32K RAM des Multi-Floppy-Speeders zu testen. Es schreibt und liest die Speicherstellen mit $00- und $FF-Bytes, um Fehler zu erkennen. Der Test sollte immer mit Bank 0 und dem originalen CBMDOS durchgeführt werden.
 

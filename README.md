@@ -30,10 +30,10 @@ Nach der Installation sollte das Diskettenlaufwerk beim ersten Start automatisch
 | -------- | ----------------- | ---------------------- |
 | 1        | CBMDOS 2.6        | IEC only               |
 | 2        | DolphinDos 2.0    | Parallel + RAM         |
-| 3        | SpeedDos+40T      | Parallel               |
+| 3        | SpeedDos+40T+GCR  | Parallel               |
 | 4        | JiffyDos 5.0      | IEC only               |
 | 5        | S-JiffyDos        | IEC only               |
-| 6        | RapiDOS Cl.       | Parallel               |
+| 6        | RapiDOS Classic   | Parallel               |
 | 7        | CBMDOS 2.6        | Placeholder            |
 | 8        | SpeedDos Expert   | Parallel + RAM         |
 
@@ -49,7 +49,7 @@ Der Wechsel der Speeder kann am Computer durch einfache Befehle ausgelöst werde
 
    Das Laufwerk wechselt zu Bank 2 und startet automatisch neu.
 
-2. **Wechsel zu Bank 3 (SpeedDos+40T):**
+2. **Wechsel zu Bank 3 (SpeedDos+40T+GCR):**
 
    ```plaintext
    OPEN 1,8,15,"I:3@RNROM":CLOSE 1
@@ -92,10 +92,10 @@ Der Switchless 8x ROM Multi Floppy Speeder verfügt über mehrere Anschlüsse, e
 | -------- | ---------------- | --------------------- | --------------------- | -------- |
 | 0        | $00000-$0FFFF    | $2000 - $9FFF 32 KB   | CBMDOS 2.6            | 1@RNROM  |
 | 1        | $10000-$1FFFF    | $2000 - $9FFF 32 KB   | DolphinDos 2.0        | 2@RNROM  |
-| 2        | $20000-$2FFFF    | $2000 - $9FFF 32 KB   | SpeedDos+40T          | 3@RNROM  |
+| 2        | $20000-$2FFFF    | $2000 - $9FFF 32 KB   | SpeedDos+40T+GCR      | 3@RNROM  |
 | 3        | $30000-$3FFFF    | $2000 - $9FFF 32 KB   | JiffyDos 5.0          | 4@RNROM  |
 | 4        | $40000-$4FFFF    | $2000 - $7FFF 24 KB   | S-JiffyDos 1          | 5@RNROM  |
-| 5        | $50000-$5FFFF    | $2000 - $7FFF 24 KB   | RapiDos Classic | 6@RNROM  |
+| 5        | $50000-$5FFFF    | $2000 - $7FFF 24 KB   | RapiDos Classic       | 6@RNROM  |
 | 6        | $60000-$6FFFF    | $A000 - $BFFF 08 KB   | CBMDOS 2.6 (Placeholder) | 7@RNROM  |
 | 7        | $70000-$7FFFF    | $A000 - $BFFF 08 KB   | SpeedDos 2.7 Expert   | 8@RNROM  |
 
@@ -132,7 +132,7 @@ Die Elektronik besteht aus folgenden Bauteilen:
 - 1x IC 74HCT273D Octal D-type flip-flop with reset; positive-edge trigger (U3) 
 - 1x IC SRAM ISSI 62C256AL-45ULI 28-PIN SOP (U6)
 - 1x IC ATmega328PB 8-Bit-ATMega AVR Microcontroller, 32 KB, 20 MHz, TQFP-32 (U4)
-- 1x DIP-Kristalloszillator 16 MHz HC-49 (Y1)
+- 1x DIP-Kristalloszillator 20 MHz HC-49 (Y1)
 - 1x EPROM-OTP AT27C040-70JU PLCC32 / AM27C040-120JC PLCC32 oder EEPROM 29F040 (PLCC32) (U2)
 - 4x Tantal-Kondensator 16V 100nF radial DIP (C1, C2, C5, C6)
 - 2x Tantal-Kondensator 16V 22pF radial DIP (C3, C4)

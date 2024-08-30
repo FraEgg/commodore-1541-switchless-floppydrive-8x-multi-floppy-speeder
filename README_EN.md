@@ -30,7 +30,7 @@ After installation, the disk drive should automatically start in ROM Bank 1, whi
 | -------- | ----------------- | --------------------- |
 | 1        | CBMDOS 2.6        | IEC only              |
 | 2        | DolphinDos 2.0    | Parallel + RAM        |
-| 3        | SpeedDos+40T      | Parallel              |
+| 3        | SpeedDos+40T+GCR  | Parallel              |
 | 4        | JiffyDos 5.0      | IEC only              |
 | 5        | S-JiffyDos        | IEC only              |
 | 6        | RapiDOS Cl.       | Parallel              |
@@ -49,7 +49,7 @@ The Speeder can be switched on the computer using simple commands:
 
    The drive switches to Bank 2 and automatically restarts.
 
-2. **Switch to Bank 3 (SpeedDos+40T):**
+2. **Switch to Bank 3 (SpeedDos+40T+GCR):**
 
    ```plaintext
    OPEN 1,8,15,"I:3@RNROM":CLOSE 1
@@ -92,7 +92,7 @@ The Switchless 8x ROM Multi Floppy Speeder features several connections, a butto
 | -------- | ---------------- | --------------------- | --------------------- | -------- |
 | 0        | $00000-$0FFFF    | $2000 - $9FFF 32 KB   | CBMDOS 2.6            | 1@RNROM  |
 | 1        | $10000-$1FFFF    | $2000 - $9FFF 32 KB   | DolphinDos 2.0        | 2@RNROM  |
-| 2        | $20000-$2FFFF    | $2000 - $9FFF 32 KB   | SpeedDos+40T          | 3@RNROM  |
+| 2        | $20000-$2FFFF    | $2000 - $9FFF 32 KB   | SpeedDos+40T+GCR      | 3@RNROM  |
 | 3        | $30000-$3FFFF    | $2000 - $9FFF 32 KB   | JiffyDos 5.0          | 4@RNROM  |
 | 4        | $40000-$4FFFF    | $2000 - $7FFF 24 KB   | S-JiffyDos 1          | 5@RNROM  |
 | 5        | $50000-$5FFFF    | $2000 - $7FFF 24 KB   | RapiDos Classic | 6@RNROM  |
@@ -132,7 +132,7 @@ The electronics consist of the following components:
 - 1x IC 74HCT273D Octal D-type flip-flop with reset; positive-edge trigger (U3)
 - 1x IC SRAM ISSI 62C256AL-45ULI 28-PIN SOP (U6)
 - 1x IC ATmega328PB 8-Bit ATMega AVR Microcontroller, 32 KB, 20 MHz, TQFP-32 (U4)
-- 1x DIP Crystal Oscillator 16 MHz HC-49 (Y1)
+- 1x DIP Crystal Oscillator 20 MHz HC-49 (Y1)
 - 1x EPROM-OTP AT27C040-70JU PLCC32 / AM27C040-120JC PLCC32 or EEPROM 29F040 (PLCC32) (U2)
 - 4x Tantalum Capacitor 16V 100nF radial DIP (C1, C2, C5, C6)
 - 2x Tantalum Capacitor 

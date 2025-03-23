@@ -1,6 +1,6 @@
-# Switchless Floppy Drive 8x Multi Floppy Speeder for the Commodore 1541 floppy disk drive (V2.2c)
+<img title="The Multi-Speeder Logo" src="https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/Multi-Speeder_Logo.png?raw=true" alt="Multi-Speeder Logo" style="zoom:25%;" data-align="center">
 
-
+# Switchless Floppy Drive 8x Multi Floppy Speeder for the Commodore 1541 Disk Drive (V2.2c)
 
 ## ATF16V8 PLD
 
@@ -9,3 +9,5 @@ ATF16V8 is a high-performance CMOS Electrically-Erasable Programmable Logic Devi
 
 
 The firmware file `ATF16V8_Logic_Vx_xx.jed` can be downloaded from [/logic/](https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/tree/master/logic).
+
+

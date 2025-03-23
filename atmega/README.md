@@ -1,3 +1,5 @@
+<img title="The Multi-Speeder Logo" src="https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/Multi-Speeder_Logo.png?raw=true" alt="Multi-Speeder Logo" style="zoom:25%;" data-align="center">
+
 # Switchless Floppy Drive 8x Multi Floppy Speeder for the Commodore 1541 Disk Drive (V2.2c)
 
 ## ATMega 328P
@@ -7,5 +9,3 @@ The Atmel ATMega 328P microcontroller monitors the data bus, controls the ROM ba
 <img title="" src="https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/XGecuT48UniversalProgrammerEEPROM.png?raw=true" alt="" data-align="center" style="zoom:80%;">
 
 <img title="" src="https://github.com/FraEgg/commodore-1541-switchless-floppydrive-8x-multi-floppy-speeder/blob/master/images/XGecuT48UniversalProgrammerConfig.png?raw=true" alt="" style="zoom:80%;" data-align="center">
-
-
